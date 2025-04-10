@@ -26,7 +26,6 @@ import com.itevebasa.evacam.auxiliar.Permisos
 import com.itevebasa.evacam.auxiliar.VariablesGlobales
 import com.itevebasa.evacam.conexion.RetrofitClient
 import com.itevebasa.evacam.modelos.ApiResponse
-import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -129,7 +128,7 @@ class MainActivity : AppCompatActivity() {
                     }
                 } else {
                     Log.d("API", "ERROR: " + response.code())
-                    Toast.makeText(this@MainActivity, "Error: ${JSONObject(response.errorBody()?.string()).getString("description")}", Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(this@MainActivity, "Error: ${JSONObject(response.errorBody()?.string()).getString("description")}", Toast.LENGTH_SHORT).show()
                 }
             }
 
