@@ -3,8 +3,8 @@
     <string name="borrar_imagen">Borrar</string>
     <string name="preview_foto">Preview Foto</string>
     <string name="anyo">Año</string>
-    <string name="codigo_vehiculo">Código Vehículo</string>
-    <string name="codigo">Código</string>
+    <string name="codigo_vehiculo">Matrícula</string>
+    <string name="codigo">Servicio</string>
     <string name="seccion_id">Sección ID</string>
     <string name="volver">Volver</string>
     <string name="guardar_seleccion">Guardar selección</string>

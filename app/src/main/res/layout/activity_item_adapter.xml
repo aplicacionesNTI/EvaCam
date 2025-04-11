@@ -9,30 +9,19 @@
     android:background="@drawable/rounded_border">
 
     <TextView
-        android:id="@+id/seccionIdText"
+        android:id="@+id/codVehiculoText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/seccion_id"
-        android:textSize="18sp" />
+        android:text="@string/codigo_vehiculo"
+        android:textSize="20sp" />
+
 
     <TextView
         android:id="@+id/codigoText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/codigo"
-        android:textSize="14sp" />
+        android:textSize="16sp" />
 
-    <TextView
-        android:id="@+id/anyoText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/anyo"
-        android:textSize="14sp" />
 
-    <TextView
-        android:id="@+id/codVehiculoText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/codigo_vehiculo"
-        android:textSize="14sp" />
 </LinearLayout>

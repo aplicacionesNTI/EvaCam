@@ -20,10 +20,8 @@ class ItemAdapter(
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = itemList[position]
-        holder.seccionIdText.text = "Sección ID: " + item.seccion_id
-        holder.codigoText.text = "Código: " + item.codigo
-        holder.anyoText.text = "Año: " + item.anyo
-        holder.codVehiculoText.text = "Código vehículo: " + item.codvehiculo
+        holder.codigoText.text = "Servicio: " + item.codigo
+        holder.codVehiculoText.text = "Matrícula: " + item.codvehiculo
 
 
         holder.itemView.setOnClickListener {
@@ -34,9 +32,7 @@ class ItemAdapter(
     override fun getItemCount(): Int = itemList.size
 
     class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val seccionIdText: TextView = itemView.findViewById(R.id.seccionIdText)
         val codigoText: TextView = itemView.findViewById(R.id.codigoText)
-        val anyoText: TextView = itemView.findViewById(R.id.anyoText)
         val codVehiculoText: TextView = itemView.findViewById(R.id.codVehiculoText)
     }
 }
