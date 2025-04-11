@@ -240,7 +240,7 @@ class DetallesActivity : AppCompatActivity() {
     private fun obtenerFotos(photos: Photos): MutableMap<String, String> {
         if (VariablesGlobales.tipoInforme == "Solo informe"){
             val filesMap = mutableMapOf(
-                "fotoInforme" to photos.frontalBase64
+                "fotoInforme" to photos.traseraBase64
             )
             return filesMap
         }else{
@@ -249,7 +249,7 @@ class DetallesActivity : AppCompatActivity() {
                 "cuentakm" to photos.cuentaKmBase64,
                 "matriculaEsquina1" to photos.frontalBase64,
                 "matriculaEsquina2" to photos.traseraBase64,
-                "fotoInforme" to photos.frontalBase64
+                "fotoInforme" to photos.traseraBase64
             )
             // Agregar imágenes extra
             photos.extras.forEachIndexed { index, base64Image ->
