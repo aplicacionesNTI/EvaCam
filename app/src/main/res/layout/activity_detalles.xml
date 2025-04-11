@@ -12,7 +12,7 @@
         android:id="@+id/enviarButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Enviar fotos"
+        android:text="@string/enviar_fotos"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -42,7 +42,7 @@
                 android:id="@+id/textView3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Delantera derecha" />
+                android:text="@string/delantera_derecha" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView3"
@@ -57,6 +57,7 @@
                     android:id="@+id/imageView3"
                     android:layout_width="match_parent"
                     android:layout_height="250dp"
+                    android:contentDescription="@string/delantera_derecha"
                     android:scaleType="centerCrop" />
             </androidx.cardview.widget.CardView>
 
@@ -64,7 +65,7 @@
                 android:id="@+id/textView4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Trasera izquierda" />
+                android:text="@string/trasera_izquierda" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView4"
@@ -79,6 +80,7 @@
                     android:id="@+id/imageView4"
                     android:layout_width="match_parent"
                     android:layout_height="250dp"
+                    android:contentDescription="@string/trasera_izquierda"
                     android:scaleType="centerCrop" />
             </androidx.cardview.widget.CardView>
 
@@ -86,7 +88,7 @@
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Bastidor" />
+                android:text="@string/bastidor" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView"
@@ -101,6 +103,7 @@
                     android:id="@+id/imageView"
                     android:layout_width="match_parent"
                     android:layout_height="250dp"
+                    android:contentDescription="@string/bastidor"
                     android:scaleType="centerCrop" />
             </androidx.cardview.widget.CardView>
 
@@ -108,7 +111,7 @@
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="CuentaKm" />
+                android:text="@string/cuentakm" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView2"
@@ -123,6 +126,7 @@
                     android:id="@+id/imageView2"
                     android:layout_width="match_parent"
                     android:layout_height="250dp"
+                    android:contentDescription="@string/cuentakm"
                     android:scaleType="centerCrop" />
             </androidx.cardview.widget.CardView>
 
@@ -130,14 +134,14 @@
                 android:id="@+id/textView5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Otras fotografías" />
+                android:text="@string/otras_fotografias" />
 
         </LinearLayout>
             <Button
                 android:id="@+id/agregarFotoButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Agregar nueva foto"
+                android:text="@string/agregar_nueva_foto"
                 android:layout_gravity="center_horizontal"
                 android:padding="8dp"/>
         </LinearLayout>

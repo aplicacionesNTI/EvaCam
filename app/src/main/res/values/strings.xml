@@ -16,4 +16,11 @@
     <string name="solo_informe">Solo informe</string>
     <string name="informe_sin_extras">Informe sin extras</string>
     <string name="todas_las_fotos">Todas las fotos</string>
+    <string name="delantera_derecha">Delantera derecha</string>
+    <string name="trasera_izquierda">Trasera izquierda</string>
+    <string name="enviar_fotos">Enviar fotos</string>
+    <string name="bastidor">Bastidor</string>
+    <string name="otras_fotografias">Otras fotografías</string>
+    <string name="agregar_nueva_foto">Agregar nueva foto</string>
+    <string name="cuentakm">CuentaKm</string>
 </resources>
