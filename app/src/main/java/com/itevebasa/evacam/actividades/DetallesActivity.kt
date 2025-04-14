@@ -39,6 +39,7 @@ import retrofit2.Response
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import androidx.core.graphics.scale
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.itevebasa.evacam.auxiliar.Vistas
 import com.itevebasa.evacam.auxiliar.Imagenes
@@ -46,6 +47,7 @@ import com.itevebasa.evacam.auxiliar.Localizacion
 import com.itevebasa.evacam.auxiliar.Permisos
 import com.itevebasa.evacam.auxiliar.VariablesGlobales
 import com.itevebasa.evacam.auxiliar.Vistas.Companion.dpToPx
+import com.itevebasa.evacam.modelos.DetallesViewModel
 import kotlinx.coroutines.launch
 
 class DetallesActivity : AppCompatActivity() {
@@ -55,6 +57,7 @@ class DetallesActivity : AppCompatActivity() {
     private var selectedImageView: ImageView? = null
     private lateinit var item: Item
     private var photoUri: Uri? = null
+    private lateinit var viewModel: DetallesViewModel
 
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     @SuppressLint("MissingPermission") //Se comprueban los permisos anteriormente
@@ -68,11 +71,13 @@ class DetallesActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        viewModel = ViewModelProvider(this)[DetallesViewModel::class.java]
         val progressDialog = Vistas.showWaitDialog(this)
         lifecycleScope.launch {
             location = Localizacion.getCurrentLocation(this@DetallesActivity)
             progressDialog.dismiss()
         }
+
         item = Item(
             intent.getStringExtra("seccion_id")!!,
             intent.getStringExtra("codigo")!!,
@@ -96,6 +101,26 @@ class DetallesActivity : AppCompatActivity() {
         val enviarButton: Button = findViewById(R.id.enviarButton)
         val addTextView: TextView = findViewById(R.id.textView5)
         val addButton = findViewById<Button>(R.id.agregarFotoButton)
+        viewModel.getImageUri("bastidor")?.let {
+            bastidorImgView.setImageURI(it)
+            bastidorImgView.tag = it
+        }
+
+        viewModel.getImageUri("cuentakm")?.let {
+            cuentakmImgView.setImageURI(it)
+            cuentakmImgView.tag = it
+        }
+
+        viewModel.getImageUri("frontal")?.let {
+            frontalImgView.setImageURI(it)
+            frontalImgView.tag = it
+        }
+
+        viewModel.getImageUri("trasera")?.let {
+            traseraImgView.setImageURI(it)
+            traseraImgView.tag = it
+        }
+
         if (VariablesGlobales.tipoInforme == "Solo informe"){
             contenedor.removeView(bastidorTextView)
             contenedor.removeView(bastidorCardView)
@@ -185,6 +210,13 @@ class DetallesActivity : AppCompatActivity() {
                         )
                         selectedImageView?.setImageURI(photoUri)
                         selectedImageView?.tag = photoUri
+
+                        when (selectedImageView?.id) {
+                            R.id.imageView -> viewModel.saveImageUri("bastidor", photoUri!!)
+                            R.id.imageView2 -> viewModel.saveImageUri("cuentakm", photoUri!!)
+                            R.id.imageView3 -> viewModel.saveImageUri("delantera", photoUri!!)
+                            R.id.imageView4 -> viewModel.saveImageUri("trasera", photoUri!!)
+                        }
                     } else {
                         Log.e("DetallesActivity", "No se pudo decodificar la imagen desde la URI.")
                     }

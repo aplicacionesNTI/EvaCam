@@ -15,6 +15,7 @@ import android.util.Log
 import android.widget.ImageView
 import androidx.core.graphics.createBitmap
 import androidx.exifinterface.media.ExifInterface
+import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileNotFoundException
 import java.io.FileOutputStream
@@ -137,10 +138,20 @@ class Imagenes {
             val imageFile = File(dir, fileName)
 
             try {
-                val outStream = FileOutputStream(imageFile)
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 30, outStream)
-                outStream.flush()
-                outStream.close()
+                var quality = 30
+                val outStream = ByteArrayOutputStream()
+                //val outStream = FileOutputStream(imageFile)
+                bitmap.compress(Bitmap.CompressFormat.JPEG, quality, outStream)
+                while (outStream.toByteArray().size > 85 * 1024 && quality > 5) {
+                    quality -= 5
+                    outStream.reset()
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, quality, outStream)
+                }
+                val finalBytes = outStream.toByteArray()
+                val fileOut = FileOutputStream(imageFile)
+                fileOut.write(finalBytes)
+                fileOut.flush()
+                fileOut.close()
 
                 val exif = ExifInterface(imageFile.absolutePath)
                 val currentDateTime = SimpleDateFormat("yyyy:MM:dd HH:mm:ss", Locale.US).format(Date())
