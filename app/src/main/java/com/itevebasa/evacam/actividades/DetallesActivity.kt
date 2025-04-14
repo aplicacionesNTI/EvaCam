@@ -92,6 +92,8 @@ class DetallesActivity : AppCompatActivity() {
         val cuentakmTextView: TextView = findViewById(R.id.textView2)
         val cuentakmImgView: ImageView = findViewById(R.id.imageView2)
         val cuentakmCardView: CardView = findViewById(R.id.cardView2)
+        val frontalCardView: CardView = findViewById(R.id.cardView3)
+        val frontalTextView: TextView = findViewById(R.id.textView3)
         val frontalImgView: ImageView = findViewById(R.id.imageView3)
         val traseraTextView: TextView = findViewById(R.id.textView4)
         val traseraImgView: ImageView = findViewById(R.id.imageView4)
@@ -126,8 +128,8 @@ class DetallesActivity : AppCompatActivity() {
             contenedor.removeView(bastidorCardView)
             contenedor.removeView(cuentakmTextView)
             contenedor.removeView(cuentakmCardView)
-            contenedor.removeView(traseraTextView)
-            contenedor.removeView(traseraCardView)
+            contenedor.removeView(frontalTextView)
+            contenedor.removeView(frontalCardView)
             contenedor.removeView(addTextView)
             contenedorAdd.removeView(addButton)
         }else if(VariablesGlobales.tipoInforme == "Informe sin extras"){
@@ -147,9 +149,13 @@ class DetallesActivity : AppCompatActivity() {
         frontalImgView.setOnClickListener { openImagePreview(frontalImgView) }
         traseraImgView.setOnClickListener { openImagePreview(traseraImgView) }
         enviarButton.setOnClickListener {
-            if ((VariablesGlobales.tipoInforme == "Solo informe" && frontalImgView.drawable == null) ||
-                ((VariablesGlobales.tipoInforme == "Informe sin extras" || VariablesGlobales.tipoInforme == "Todas las fotos") &&
-                bastidorImgView.drawable == null || cuentakmImgView.drawable == null || frontalImgView.drawable == null || traseraImgView.drawable == null)){
+            if (
+                (VariablesGlobales.tipoInforme == "Solo informe" && traseraImgView.drawable == null) ||
+                (VariablesGlobales.tipoInforme == "Informe sin extras" &&
+                        (bastidorImgView.drawable == null || cuentakmImgView.drawable == null || frontalImgView.drawable == null || traseraImgView.drawable == null)) ||
+                (VariablesGlobales.tipoInforme == "Todas las fotos" &&
+                        (bastidorImgView.drawable == null || cuentakmImgView.drawable == null || frontalImgView.drawable == null || traseraImgView.drawable == null))
+            ) {
                 Toast.makeText(this@DetallesActivity, "Realiza las fotos obligatorias antes de enviar", Toast.LENGTH_LONG).show()
             }else{
                 val extraImages = mutableListOf<String>()
